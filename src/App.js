@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import { Helmet } from 'react-helmet';
+import './stylesheets/all.css';
+import {Routes, Route} from 'react-router-dom';
+// import React, { useEffect } from 'react';
+import About from './component/about';
+import NotFount from './component/Notfound';
+import Layout from './component/Layout';
+import Home from './component/Home';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* title-icon */}
+      <Helmet>
+        <title>A coffee</title>
+        <link rel="icon" href="myproject/public/coffee.png" type="image/x-icon" />
+      </Helmet>
+      
+    {/* 路由器設定 */}
+      <switch>
+        <Routes>
+          <Route path='/' element={<Layout/>}>
+            <Route path='/' element={<Home/>}/>
+            <Route path='about' element={<About/>}/>
+          </Route>
+          {/* 404 轉址錯誤 */}
+            <Route path='*' element={<NotFount/>}/> 
+        </Routes>
+        
+      </switch>
+    
     </div>
+
+
   );
 }
 
