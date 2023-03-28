@@ -7,6 +7,8 @@ import About from './component/about';
 import NotFount from './component/Notfound';
 import Layout from './component/Layout';
 import Home from './component/Home';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 
 
@@ -25,6 +27,8 @@ function App() {
           <Route path='/' element={<Layout/>}>
             <Route path='/' element={<Home/>}/>
             <Route path='about' element={<About/>}/>
+            <Route path='login' element={<Login/>}/>
+            <Route path='sigup' element={<SignUp/>}/>
           </Route>
           {/* 404 轉址錯誤 */}
             <Route path='*' element={<NotFount/>}/> 

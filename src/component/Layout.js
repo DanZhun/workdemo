@@ -1,36 +1,42 @@
 import {Link, Outlet} from 'react-router-dom';
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { useEffect, useState } from 'react';
 
 function Layout(){
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  }
+
     return(
       <>
       <div>
         {/* navbar */}
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
           <div class="container">
-            <a class="navbar-brand" href="#">Coffee</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <Link className="navbar-brand" to="/">Coffee</Link>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" onClick={toggleExpanded}>
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarText">
+            <div class={"collapse navbar-collapse " + (isExpanded ? "show" : "")} id="navbarText">
               <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-2">
                 <li class="nav-item">
                   {/* <a class="nav-link active" aria-current="page text-white"> */}
-                    <Link to="/about" class="nav-link active" aria-current="page text-white">關於</Link>
+                    <Link to="/about" class="nav-link active" aria-current="page text-white" onClick={toggleExpanded}>關於</Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/introduction" class="nav-link">介紹</Link>
+                  <Link to="/introduction" class="nav-link" onClick={toggleExpanded}>介紹</Link>
                 </li>
                 <li class="nav-item">
-                <Link to="/menu" class="nav-link">菜單</Link>
+                <Link to="/menu" class="nav-link" onClick={toggleExpanded}>菜單</Link>
                 </li>
               </ul>
-              <button type="button" class="btn btn-primary text-white">登入</button>
+              <button type="button" class="btn btn-primary text-white" onClick={toggleExpanded}>登入</button>
   
             </div>
           </div>
         </nav>
+
         {/* header */}
         <header class="header" style={{
           height:'500px', 
