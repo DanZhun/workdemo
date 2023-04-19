@@ -1,16 +1,22 @@
-// import logo from './logo.svg';
+
 import { Helmet } from 'react-helmet';
 import './stylesheets/all.css';
 import {Routes, Route} from 'react-router-dom';
-// import React, { useEffect } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+// Component
 import About from './component/about';
 import NotFount from './component/Notfound';
-import Layout from './component/Layout';
+import Layout from './pages/Layout';
 import Home from './component/Home';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+// import Login from './pages/Login';
+// import SignUp from './component/Register';
 
 
+library.add(fab, fas, far);
 
 function App() {
   return (
@@ -27,8 +33,8 @@ function App() {
           <Route path='/' element={<Layout/>}>
             <Route path='/' element={<Home/>}/>
             <Route path='about' element={<About/>}/>
-            <Route path='login' element={<Login/>}/>
-            <Route path='sigup' element={<SignUp/>}/>
+            {/* <Route path='login' element={<Login/>}/> */}
+            {/* <Route path='sigup' element={<SignUp/>}/> */}
           </Route>
           {/* 404 轉址錯誤 */}
             <Route path='*' element={<NotFount/>}/> 
