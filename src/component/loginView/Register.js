@@ -34,7 +34,7 @@ function SignUp () {
       showToast('Register Success', 'success')
     }).catch(err => {
       if (err.response && err.response.data && err.response.data.error) {
-        sweetAlert(err.response.data.message, err.response.data.error[1], 'warning')
+        sweetAlert(err.response.data.message, err.response.data.error[0], 'warning')
       } else {
         console.log(err)
         sweetAlert('Something went wrong', 'Please try again later', 'warning')
