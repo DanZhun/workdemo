@@ -51,5 +51,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://DanZhun.github.io/workdemo"
+  "homepage": "https://DanZhun.github.io/workdemo",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }
