@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useAuth, useUserName } from "../../utils/Context"
 import { useForm } from "react-hook-form"
 import axios from "axios"
+
+import { useAuth, useUserName } from "../../utils/Context"
 import { sweetAlert, showToast } from '../../utils/sweetalert'
 
 function SignUp () {
@@ -15,11 +16,11 @@ function SignUp () {
     setLoading(true)
     const { email, password, checkPassword, nickname } = data
     if (password !== checkPassword) {
-      sweetAlert('Password is not the same', 'Please comfirm password', 'warning')
+      sweetAlert('Password is not the same', 'Please confirm password', 'warning')
       setLoading(false)
       return
     }
-    axios.post(process.env.REACT_APP_API+'/users', {
+    axios.post(process.env.REACT_APP_API_URL+'/users', {
       'user': { 
         'email': email,
         'password': password,
@@ -29,13 +30,19 @@ function SignUp () {
       setToken(res.headers.authorization)
       setUserName(res.data.nickname)
       setLoading(false)
-      navigate('/todolist', { replace: true })
+      navigate('/TodoHome', { replace: true })
       showToast('Register Success', 'success')
     }).catch(err => {
-      sweetAlert(err.response.data.message, err.response.data.error[0] , 'warning')
+      if (err.response && err.response.data && err.response.data.error) {
+        sweetAlert(err.response.data.message, err.response.data.error[1], 'warning')
+      } else {
+        console.log(err)
+        sweetAlert('Something went wrong', 'Please try again later', 'warning')
+      }
       setLoading(false)
     })
   }
+
 
   return (
     <div>
@@ -111,7 +118,7 @@ function SignUp () {
           }
           
         </button>
-        <Link to={ '/' } className="text-cyan-300 text-center p-3">Login</Link>
+        <Link to={ '/login' } className="text-cyan-300 text-center p-3">Login</Link>
       </form>
       
     </div>

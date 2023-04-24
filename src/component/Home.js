@@ -15,7 +15,7 @@ function Home(){
             <div class="container d-flex align-items-center h-100">
                 <div>
                     <h1 class="text-white">咖啡世界<br/>ウェルカムトゥコーヒー</h1>
-                    <Link to="/">
+                    <Link to="/About">
                     <button class="btn btn-primary btn-lg text-white" type="button">認識更多</button>
                     </Link>
                 </div>
@@ -69,7 +69,7 @@ function Home(){
               <div className="col-md-5">
                   <img className="height-s5 w-100 objec-fit-cover" src="https://mixkit.imgix.net/art/preview/mixkit-girl-holding-takeaway-coffee-in-city-cafe-541-original-large.png?q=80&auto=format%2Ccompress"/>
               </div>
-              <div className="col-md-5 d-flex align-items-center">
+              <div className="col-md-5 d-flex align-items-center text-white">
                   <div>
                       <h1><b>咖啡の質感生活</b></h1><br/>
                       <h3><b>生活就像咖啡，<br/><br/>自信如同沸騰的熱水，<br/><br/>兩者融合就能香濃四溢。</b></h3>
@@ -77,7 +77,7 @@ function Home(){
               </div>
           </div>
           {/* 2 */}
-          <div className="row justify-content-center mt-4 flex-row-reverse">
+          <div className="row justify-content-center mt-4 flex-row-reverse text-white">
               <div className="col-md-5">
                   <img className="height-s5 w-100 objec-fit-cover" src="https://mixkit.imgix.net/art/preview/mixkit-left-handed-man-sitting-at-a-table-writing-in-a-notebook-27-original-large.png?q=80&auto=format%2Ccompress"/>
               </div>
@@ -94,7 +94,7 @@ function Home(){
           backgroundImage:'url("https://images.unsplash.com/photo-1618105965240-9aa565e73a0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80")', 
           backgroundSize:'cover', 
           backgroundPosition:'center',
-          opacity:'0.5',
+          
         }}>
   
           <div className="container">

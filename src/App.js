@@ -1,7 +1,9 @@
 
 import { Helmet } from 'react-helmet';
 import './stylesheets/all.css';
+import './App.css';
 import {Routes, Route} from 'react-router-dom';
+import { AuthContext, UserNameContext } from './utils/Context'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -12,14 +14,21 @@ import About from './component/about';
 import NotFount from './component/Notfound';
 import Layout from './pages/Layout';
 import Home from './component/Home';
-// import Login from './pages/Login';
-// import SignUp from './component/Register';
-
+import { useState } from 'react';
+import Login from './component/loginView/Login';
+import Register from './component/loginView/Register';
+import Main from './pages/Main';
+import TodoHome from './pages/TodoHome';
+import ProtectedRoute from './utils/ProtectedRoute'
 
 library.add(fab, fas, far);
 
 function App() {
+  const [token, setToken] = useState(null)
+  const [userName, setUserName] = useState('')
   return (
+    <AuthContext.Provider value={{ token, setToken }}>
+    <UserNameContext.Provider value={{ userName, setUserName }}>
     <div className="App">
       {/* title-icon */}
       <Helmet>
@@ -28,22 +37,27 @@ function App() {
       </Helmet>
       
     {/* 路由器設定 */}
-      <switch>
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route path='/' element={<Home/>}/>
             <Route path='about' element={<About/>}/>
-            {/* <Route path='login' element={<Login/>}/> */}
-            {/* <Route path='sigup' element={<SignUp/>}/> */}
+          </Route>
+          <Route>
+            <Route path='todoHome' element={<todoHome/>}/>
+            <Route path='login' element={<Login/>}/>
+            <Route path='register' element={<Register/>}/>
+          </Route>
+          <Route element={<ProtectedRoute/>}>
+            <Route path="/todolist" element={<Main/>}/>
           </Route>
           {/* 404 轉址錯誤 */}
             <Route path='*' element={<NotFount/>}/> 
         </Routes>
         
-      </switch>
     
     </div>
-
+    </UserNameContext.Provider>
+    </AuthContext.Provider>
 
   );
 }

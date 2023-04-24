@@ -24,7 +24,7 @@ function Login () {
       setUserName(res.data.nickname)
       showToast('Login Success', 'success')
       setLoading(false)
-      navigate('/todolist', { replace: true })
+      navigate('/todoHome', { replace: true })
     }).catch(err => {
       sweetAlert(err.response.data.message , 'Email or Password wrong.<br>Or register a new one', 'warning')
       setLoading(false)
@@ -34,8 +34,8 @@ function Login () {
   return (
     <div>
       <form className="flex flex-col font-bold tracking-wide" onSubmit={ handleSubmit(onSubmit) }>
-        <h2 className="text-2xl mb-14 text-white text-center">Future World TodoList Serve</h2>
-        <label className="text-sm text-white text-shadow" htmlFor="email">EMAIL</label>
+        <h2 className="text-2xl mb-14 text-white text-center">Welcom to Coffe.</h2>
+        <label className="text-sm text-white text-shadow text-center" htmlFor="email">EMAIL</label>
         <input className="w-full mt-2 p-3 border-0 rounded-xl" type="text" id="email" name="email"
         placeholder="enter email..." required defaultValue=""
           { ...register("email", {
@@ -48,7 +48,7 @@ function Login () {
               message: "not follow Email rule"
             }
           })}
-        />
+        /><br/>
         <span className="text-orange-300 text-sm text-shadow mt-1">{ errors.email?.message }</span>
         <label className="text-sm text-white text-shadow mt-4" htmlFor="pwd">PASSWORD</label>
         <input className="w-full mt-2 p-3 border-0 rounded-xl" type="password" name="pwd" id="pwd"
@@ -64,7 +64,7 @@ function Login () {
             }
           })}
         />
-        <span className="text-orange-300 text-sm text-shadow">{ errors.password?.message }</span>
+        <span className="text-orange-300 text-sm text-shadow">{ errors.password?.message }</span><br/>
         <button className="w-40 mx-auto bg-cyan-500 hover:bg-cyan-600 rounded-xl text-white py-3 mt-8" type="submit">
           {
             loading ? 
@@ -74,7 +74,8 @@ function Login () {
           : 'Login'
           }
         </button>
-        <Link to={ '/register' } className="text-cyan-300 text-center p-3">Register</Link>
+        <Link to={ '/register' } className="text-cyan-300 text-center p-3">Register</Link><br/><br/>
+        <Link to={ '/'} className="text-center">Home</Link>
       </form>
     </div>
   )

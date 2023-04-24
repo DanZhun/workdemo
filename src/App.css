@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+html, body {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  height: 100%;
+  line-height: 1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-image: url('https://images.unsplash.com/photo-1515106426117-7483c8b91e9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80');
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  transition: all .3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 576px) {
+  body {
+    background-size: auto 160%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.text-shadow{
+  text-shadow: 0 0 10px #000;
 }
 
-.App-link {
-  color: #61dafb;
+.todoList_content {
+  width: 500px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 576px) {
+  .todoList_content {
+    width: 91%;
   }
-  to {
+}
+
+.todoList_check:checked ~ span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todoList_check:checked ~ i {
+  display: block;
+}
+
+.active {
+  color: #333333;
+  border-bottom: 2px solid #333333;
+}
+
+input {
+  opacity: .8;
+}
+
+.animate-moon{
+  animation: spin 60s linear infinite;
+  /* filter: drop-shadow(0 0 10px rgba(255,255,255, .5));
+  filter: drop-shadow(0 0 10px rgba(0,0,0, .5)); */
+}
+@keyframes spin {
+  100% {
     transform: rotate(360deg);
   }
 }

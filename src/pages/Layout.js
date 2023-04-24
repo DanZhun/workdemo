@@ -1,8 +1,30 @@
-import {Link, Outlet} from 'react-router-dom';
-import React, { useState } from 'react'; //useEffect
+import {Link, Outlet} from 'react-router-dom'
+import React, { useState } from 'react' //useEffect
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// 登入
+// import { useAuth, useUserName } from "../utils/Context"
+// import { checkLogIn } from '../utils/todoAPI'
+// import { showToast } from '../utils/sweetalert'
 
 function Layout(){
+  // 登入
+  // let navigate = useNavigate()
+  // const { token, setToken } = useAuth()
+  // const { userName } = useUserName()
+  // useEffect(() =>{
+  //   checkLogIn(token).catch(err => {
+  //     console.log(err)
+  //     showToast('Please Login again', 'warning')
+  //     navigate('/login', {replace: true})
+  //   })
+  // }, [navigate, token])
+
+  // const logOut = () => {
+  //   setToken(null)
+  //   showToast('Have been logout', 'sucess')
+  // }
+
+  // 事件點擊
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpanded = () => {
@@ -31,12 +53,12 @@ function Layout(){
                   <Link to="/introduction" className="nav-link" onClick={toggleExpanded}>介紹</Link>
                 </li>
                 <li className="nav-item">
-                <Link to="/menu" className="nav-link" onClick={toggleExpanded}>菜單</Link>
+                <Link to="/login" className="nav-link" onClick={toggleExpanded}>ToDOList</Link>
                 </li>
               </ul>
-              <Link to="myproject/src/pages/Login.js">
-              <button type="button" className="btn btn-primary text-white" onClick={toggleExpanded}>登入</button>
-              </Link>
+              {/* <Link to="/login">
+              <button type="button" className="btn btn-primary text-white" onClick={toggleExpanded}><span>{ userName}</span></button> 
+              </Link> */}
   
             </div>
           </div>
